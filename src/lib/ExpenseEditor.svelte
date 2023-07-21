@@ -22,33 +22,56 @@
 	}
 </script>
 
-<h3 class="h3" style="padding-bottom: 10px">Expenses</h3>
-<input class="input" type="text" placeholder="Name" bind:value={new_expense_name} />
-<input class="input" type="number" placeholder="Price" bind:value={new_expense_price} />
+<h2 class="h2" style="padding-bottom: 10px">Expenses</h2>
+<input
+	class="input"
+	type="text"
+	style="max-width:20%;padding:3px;"
+	placeholder="Name"
+	bind:value={new_expense_name}
+/>
+<input
+	class="input"
+	type="number"
+	style="max-width:20%;padding:3px;"
+	placeholder="Price"
+	bind:value={new_expense_price}
+/>
 <button
 	class="btn variant-filled-primary"
 	on:click={() => addExpense()}
 	disabled={new_expense_name.length < 3 || new_expense_price === 0}>Add expense</button
 >
-<!-- <button class="btn variant-filled-primary" on:click={() => removeDay()}>Remove day</button> -->
-{#each $expenses as expense}
-	<div>
-		<p>{expense.name}</p>
-		<p>{expense.price}€</p>
-		<ListBox multiple>
-			<ListBoxItem bind:group={expense.servings} name="medium" value="breakfast"
-				>Breakfast</ListBoxItem
+<ul class="list py-3">
+	{#each $expenses as expense}
+		<li class="py-3">
+			<h5 class="h5">{expense.name} {expense.price}€</h5>
+			<ListBox multiple spacing="space-y-5">
+				<div class="snap-x snap-mandatory flex gap-3">
+					<ListBoxItem bind:group={expense.servings} name="medium" value="breakfast"
+						>Breakfast
+					</ListBoxItem>
+					<ListBoxItem bind:group={expense.servings} name="medium" value="lunch">Lunch</ListBoxItem>
+					<ListBoxItem bind:group={expense.servings} name="medium" value="dinner"
+						>Dinner</ListBoxItem
+					>
+					<ListBoxItem bind:group={expense.servings} name="medium" value="snacks"
+						>Snacks</ListBoxItem
+					>
+				</div>
+			</ListBox>
+			<button class="btn variant-ghost-warning" on:click={() => removeExpense(expense.name)}
+				>X</button
 			>
-			<ListBoxItem bind:group={expense.servings} name="medium" value="lunch">Lunch</ListBoxItem>
-			<ListBoxItem bind:group={expense.servings} name="medium" value="dinner">Dinner</ListBoxItem>
-			<ListBoxItem bind:group={expense.servings} name="medium" value="snacks">Snacks</ListBoxItem>
-		</ListBox>
-		<button class="btn variant-ghost-warning" on:click={() => removeExpense(expense.name)}>X</button
-		>
-	</div>
-{/each}
+			{#if expense.servings.length === 0}
+				<span class="chip variant-filled-error">!</span>
+			{/if}
+		</li>
+	{/each}
+</ul>
 
-<p>
-	Total: {$totalCosts.all}€ Breakfast: {$totalCosts.breakfast}€ Lunch: {$totalCosts.lunch}€ Dinner: {$totalCosts.dinner}€
-	Snacks: {$totalCosts.snacks}€
-</p>
+<p>Breakfast: {$totalCosts.breakfast}€</p>
+<p>Lunch: {$totalCosts.lunch}€</p>
+<p>Dinner: {$totalCosts.dinner}€</p>
+<p>Snacks: {$totalCosts.snacks}€</p>
+<p>Total: {$totalCosts.all}€</p>
