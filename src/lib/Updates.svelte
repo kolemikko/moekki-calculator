@@ -1,10 +1,13 @@
 <script lang="ts">
+	import { days } from '../stores/days';
 	import { expenses } from '../stores/expenses';
 	import { totalCosts } from '../stores/totals';
 
-	$: $expenses,
+	$: $days,
+		$expenses,
 		(() => {
 			updateTotalCosts();
+			updateDayRates();
 		})();
 
 	function updateTotalCosts() {
@@ -49,5 +52,53 @@
 		$totalCosts.lunch = total_lunch;
 		$totalCosts.dinner = total_dinner;
 		$totalCosts.snacks = total_snacks;
+	}
+
+	function updateDayRates() {
+		let breakfast_divided: number = 0.0;
+		let lunch_divided: number = 0.0;
+		let dinner_divided: number = 0.0;
+		let snacks_divided: number = 0.0;
+
+		for (var d of $days) {
+			if (d.servings.includes('breakfast')) {
+				breakfast_divided += 1.0;
+			}
+			if (d.servings.includes('lunch')) {
+				lunch_divided += 1.0;
+			}
+			if (d.servings.includes('dinner')) {
+				dinner_divided += 1.0;
+			}
+			if (d.servings.includes('snacks')) {
+				snacks_divided += 1.0;
+			}
+		}
+
+		for (var d of $days) {
+			if (d.servings.includes('breakfast')) {
+				d.breakfast_day_rate = $totalCosts.breakfast / breakfast_divided;
+			} else {
+				d.breakfast_day_rate = 0.0;
+			}
+			if (d.servings.includes('lunch')) {
+				d.lunch_day_rate = $totalCosts.lunch / lunch_divided;
+			} else {
+				d.lunch_day_rate = 0.0;
+			}
+			if (d.servings.includes('dinner')) {
+				d.dinner_day_rate = $totalCosts.dinner / dinner_divided;
+			} else {
+				d.dinner_day_rate = 0.0;
+			}
+			if (d.servings.includes('snacks')) {
+				d.snacks_day_rate = $totalCosts.snacks / snacks_divided;
+			} else {
+				d.snacks_day_rate = 0.0;
+			}
+			d.total_day_rate =
+				d.breakfast_day_rate + d.lunch_day_rate + d.dinner_day_rate + d.snacks_day_rate;
+		}
+		$days = $days;
 	}
 </script>

@@ -25,7 +25,7 @@
 <!-- <input class="input" type="text" placeholder="Name for" /> -->
 <button class="btn variant-filled-primary" on:click={() => addDay()}>Add day</button>
 <button class="btn variant-filled-primary" on:click={() => removeDay()}>Remove day</button>
-<div class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex gap-4 overflow-x-auto px-4 py-10">
+<div class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex gap-4 overflow-x-auto px-3 py-10">
 	{#each $days as day}
 		<div class="snap-start shrink-0 card w-20%">
 			<div class="day-servings">

@@ -42,7 +42,7 @@
 	on:click={() => addExpense()}
 	disabled={new_expense_name.length < 3 || new_expense_price === 0}>Add expense</button
 >
-<ul class="list py-3">
+<ul class="list py-3 px-3">
 	{#each $expenses as expense}
 		<li class="py-3">
 			<h5 class="h5">{expense.name} {expense.price}€</h5>
