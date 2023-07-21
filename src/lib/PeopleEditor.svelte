@@ -25,7 +25,7 @@
 	class="input"
 	type="text"
 	placeholder="Name"
-	style="max-width:20%;padding:3px;"
+	style="max-width:30%;padding:3px;"
 	bind:value={new_person_name}
 />
 <button

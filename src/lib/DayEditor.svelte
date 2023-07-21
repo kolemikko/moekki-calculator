@@ -41,7 +41,7 @@
 <div class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex gap-4 overflow-x-auto px-3 py-10">
 	{#each $days as day}
 		<div class="snap-start shrink-0 card w-20%">
-			<div class="day-servings">
+			<div class="day-card">
 				<h5 class="h5" style="padding-bottom: 10px">Day {day.name}</h5>
 				<ListBox multiple spacing="space-y-3">
 					<ListBoxItem bind:group={day.servings} name="medium" value="breakfast"
@@ -83,12 +83,9 @@
 </div>
 
 <style>
-	.day-servings {
-		/* max-width: 200px; */
-		/* width: 15%; */
+	.day-card {
 		padding: 15px;
-		/* border-width: 3px; */
-		/* border-radius: 30px; */
-		/* margin: 0 auto; */
+		border-width: 1px;
+		border-radius: 10px;
 	}
 </style>

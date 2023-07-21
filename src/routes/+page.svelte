@@ -12,23 +12,19 @@
 		<h2 class="h2">Moekki-calculator</h2>
 	</div>
 	<LightSwitch />
-	<!-- <h1>Moekki-calculator</h1> -->
 </AppBar>
-<!-- <div class="container h-full mx-auto flex justify-center items-center"> -->
 <div class="container mx-auto p-8 space-y-8">
-	<!-- <div class="space-y-5"> -->
-	<!-- </div> -->
 	<Updates />
-	<section>
+	<section class="card py-5 px-5" style="border-radius:5px;">
 		<DayEditor />
 	</section>
-	<section>
+	<section class="card py-5 px-5" style="border-radius:5px;">
 		<ExpenseEditor />
 	</section>
-	<section>
+	<section class="card py-5 px-5" style="border-radius:5px;">
 		<PeopleEditor />
 	</section>
-	<section>
+	<section class="card py-5 px-5" style="border-radius:5px;">
 		<Balances />
 	</section>
 </div>

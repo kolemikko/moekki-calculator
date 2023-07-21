@@ -5,6 +5,8 @@
 </script>
 
 <h2 class="h2" style="padding-bottom: 10px">Balances</h2>
-{#each $people as person}
-	<h5>{person.name}: {EURO(person.cost).format()}</h5>
-{/each}
+<div class="px-3">
+	{#each $people as person}
+		<h5>{person.name}: {EURO(person.cost).format()}</h5>
+	{/each}
+</div>

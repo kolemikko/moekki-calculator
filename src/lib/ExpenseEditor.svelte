@@ -27,14 +27,14 @@
 <input
 	class="input"
 	type="text"
-	style="max-width:20%;padding:3px;"
+	style="max-width:30%;padding:3px;"
 	placeholder="Name"
 	bind:value={new_expense_name}
 />
 <input
 	class="input"
 	type="number"
-	style="max-width:20%;padding:3px;"
+	style="max-width:30%;padding:3px;"
 	placeholder="Price"
 	bind:value={new_expense_price}
 />
