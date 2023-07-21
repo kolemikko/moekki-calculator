@@ -3,6 +3,7 @@
 	import { ListBox, ListBoxItem, SlideToggle } from '@skeletonlabs/skeleton';
 	import { Expense } from '../types';
 	import { totalCosts } from '../stores/totals';
+	import { EURO } from './Utils';
 
 	let new_expense_name: String = '';
 	let new_expense_price: number = 0.0;
@@ -45,7 +46,7 @@
 <ul class="list py-3 px-3">
 	{#each $expenses as expense}
 		<li class="py-3">
-			<h5 class="h5">{expense.name} {expense.price}€</h5>
+			<h5 class="h5">{expense.name} {EURO(expense.price).format()}</h5>
 			<ListBox multiple spacing="space-y-5">
 				<div class="snap-x snap-mandatory flex gap-3">
 					<ListBoxItem bind:group={expense.servings} name="medium" value="breakfast"
@@ -70,8 +71,8 @@
 	{/each}
 </ul>
 
-<p>Breakfast: {$totalCosts.breakfast}€</p>
-<p>Lunch: {$totalCosts.lunch}€</p>
-<p>Dinner: {$totalCosts.dinner}€</p>
-<p>Snacks: {$totalCosts.snacks}€</p>
-<p>Total: {$totalCosts.all}€</p>
+<p>Breakfast: {EURO($totalCosts.breakfast).format()}</p>
+<p>Lunch: {EURO($totalCosts.lunch).format()}</p>
+<p>Dinner: {EURO($totalCosts.dinner).format()}</p>
+<p>Snacks: {EURO($totalCosts.snacks).format()}</p>
+<p>Total: {EURO($totalCosts.all).format()}</p>

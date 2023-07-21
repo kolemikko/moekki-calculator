@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { days } from '../stores/days';
-	import { SlideToggle } from '@skeletonlabs/skeleton';
 	import { Day } from '../types';
 	import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
+	import { EURO } from './Utils';
 
 	$: $days,
 		(() => {
@@ -35,7 +35,7 @@
 						>Breakfast
 						<svelte:fragment slot="trail">
 							{#if day.servings.includes('breakfast')}
-								<p>{day.breakfast_day_rate}€</p>
+								<p>{EURO(day.breakfast_day_rate).format()}</p>
 							{/if}
 						</svelte:fragment>
 					</ListBoxItem>
@@ -43,7 +43,7 @@
 						>Lunch
 						<svelte:fragment slot="trail">
 							{#if day.servings.includes('lunch')}
-								<p>{day.lunch_day_rate}€</p>
+								<p>{EURO(day.lunch_day_rate).format()}</p>
 							{/if}
 						</svelte:fragment>
 					</ListBoxItem>
@@ -51,7 +51,7 @@
 						>Dinner
 						<svelte:fragment slot="trail">
 							{#if day.servings.includes('dinner')}
-								<p>{day.dinner_day_rate}€</p>
+								<p>{EURO(day.dinner_day_rate).format()}</p>
 							{/if}
 						</svelte:fragment>
 					</ListBoxItem>
@@ -59,7 +59,7 @@
 						>Snacks
 						<svelte:fragment slot="trail">
 							{#if day.servings.includes('snacks')}
-								<p>{day.snacks_day_rate}€</p>
+								<p>{EURO(day.snacks_day_rate).format()}</p>
 							{/if}
 						</svelte:fragment>
 					</ListBoxItem>
