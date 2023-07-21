@@ -6,16 +6,15 @@
 
 	$: $days,
 		$expenses,
+		$people,
 		(() => {
 			updateTotalCosts();
 			updateDayRates();
+			updateAttendances();
+			updateBalances();
 		})();
 
-	$: $days,
-		$people,
-		(() => {
-			updateAttendances();
-		})();
+	$: $days, (() => {})();
 
 	function updateTotalCosts() {
 		let total = 0.0;
@@ -151,5 +150,33 @@
 				day.snacks_attendance_count = count;
 			}
 		});
+		$days = $days;
+	}
+
+	function updateBalances() {
+		for (var p of $people) {
+			let total_cost = 0.0;
+			for (var a of p.attendance) {
+				if (a.present) {
+					let day = $days.find((x) => x.name === a.day_name);
+					if (day) {
+						if (a.servings.includes('breakfast')) {
+							total_cost += day.breakfast_day_rate / day.breakfast_attendance_count;
+						}
+						if (a.servings.includes('lunch')) {
+							total_cost += day.lunch_day_rate / day.lunch_attendance_count;
+						}
+						if (a.servings.includes('dinner')) {
+							total_cost += day.dinner_day_rate / day.dinner_attendance_count;
+						}
+						if (a.servings.includes('snacks')) {
+							total_cost += day.snacks_day_rate / day.snacks_attendance_count;
+						}
+					}
+				}
+			}
+			p.cost = total_cost;
+		}
+		$people = $people;
 	}
 </script>

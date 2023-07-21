@@ -1,4 +1,5 @@
 <script>
+	import Balances from '$lib/Balances.svelte';
 	import DayEditor from '$lib/DayEditor.svelte';
 	import ExpenseEditor from '$lib/ExpenseEditor.svelte';
 	import PeopleEditor from '$lib/PeopleEditor.svelte';
@@ -26,5 +27,8 @@
 	</section>
 	<section>
 		<PeopleEditor />
+	</section>
+	<section>
+		<Balances />
 	</section>
 </div>

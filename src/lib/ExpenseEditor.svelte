@@ -71,8 +71,8 @@
 	{/each}
 </ul>
 
-<p>Breakfast: {EURO($totalCosts.breakfast).format()}</p>
-<p>Lunch: {EURO($totalCosts.lunch).format()}</p>
-<p>Dinner: {EURO($totalCosts.dinner).format()}</p>
-<p>Snacks: {EURO($totalCosts.snacks).format()}</p>
-<p>Total: {EURO($totalCosts.all).format()}</p>
+<h6 class="h6">Breakfast: {EURO($totalCosts.breakfast).format()}</h6>
+<h6 class="h6">Lunch: {EURO($totalCosts.lunch).format()}</h6>
+<h6 class="h6">Dinner: {EURO($totalCosts.dinner).format()}</h6>
+<h6 class="h6">Snacks: {EURO($totalCosts.snacks).format()}</h6>
+<h6 class="h6">Total: {EURO($totalCosts.all).format()}</h6>
