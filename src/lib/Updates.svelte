@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { days } from '../stores/days';
 	import { expenses } from '../stores/expenses';
+	import { people } from '../stores/people';
 	import { totalCosts } from '../stores/totals';
 
 	$: $days,
@@ -8,6 +9,12 @@
 		(() => {
 			updateTotalCosts();
 			updateDayRates();
+		})();
+
+	$: $days,
+		$people,
+		(() => {
+			updateAttendances();
 		})();
 
 	function updateTotalCosts() {
@@ -100,5 +107,49 @@
 				d.breakfast_day_rate + d.lunch_day_rate + d.dinner_day_rate + d.snacks_day_rate;
 		}
 		$days = $days;
+	}
+
+	function updateAttendances() {
+		$days.forEach((day, idx) => {
+			if (day.servings.includes('breakfast')) {
+				let count: number = 0.0;
+				for (var p of $people) {
+					if (
+						p.attendance.at(idx)?.present &&
+						p.attendance.at(idx)?.servings.includes('breakfast')
+					) {
+						count += 1.0;
+					}
+				}
+				day.breakfast_attendance_count = count;
+			}
+			if (day.servings.includes('lunch')) {
+				let count: number = 0.0;
+				for (var p of $people) {
+					if (p.attendance.at(idx)?.present && p.attendance.at(idx)?.servings.includes('lunch')) {
+						count += 1.0;
+					}
+				}
+				day.lunch_attendance_count = count;
+			}
+			if (day.servings.includes('dinner')) {
+				let count: number = 0.0;
+				for (var p of $people) {
+					if (p.attendance.at(idx)?.present && p.attendance.at(idx)?.servings.includes('dinner')) {
+						count += 1.0;
+					}
+				}
+				day.dinner_attendance_count = count;
+			}
+			if (day.servings.includes('snacks')) {
+				let count: number = 0.0;
+				for (var p of $people) {
+					if (p.attendance.at(idx)?.present && p.attendance.at(idx)?.servings.includes('snacks')) {
+						count += 1.0;
+					}
+				}
+				day.snacks_attendance_count = count;
+			}
+		});
 	}
 </script>

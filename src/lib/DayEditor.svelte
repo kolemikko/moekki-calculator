@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { days } from '../stores/days';
-	import { Day } from '../types';
+	import { Attendance, Day } from '../types';
 	import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
 	import { EURO } from './Utils';
+	import { people } from '../stores/people';
 
 	$: $days,
 		(() => {
@@ -13,11 +14,23 @@
 		let d = new Day(($days.length + 1).toString());
 		$days.push(d);
 		$days = $days;
+		for (var p of $people) {
+			if (p.attendance.length !== $days.length) {
+				p.attendance.push(new Attendance($days.length.toString()));
+			}
+		}
+		$people = $people;
 	}
 
 	function removeDay() {
 		$days.pop();
 		$days = $days;
+		for (var p of $people) {
+			if (p.attendance.length !== $days.length - 1) {
+				p.attendance.pop();
+			}
+		}
+		$people = $people;
 	}
 </script>
 

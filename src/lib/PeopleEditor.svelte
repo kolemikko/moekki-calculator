@@ -42,12 +42,20 @@
 				<SlideToggle name="Present" bind:checked={a.present} />
 				{#if a.present}
 					<ListBox multiple>
-						<ListBoxItem bind:group={a.servings} name="medium" value="breakfast"
-							>Breakfast</ListBoxItem
-						>
-						<ListBoxItem bind:group={a.servings} name="medium" value="lunch">Lunch</ListBoxItem>
-						<ListBoxItem bind:group={a.servings} name="medium" value="dinner">Dinner</ListBoxItem>
-						<ListBoxItem bind:group={a.servings} name="medium" value="snacks">Snacks</ListBoxItem>
+						{#if $days.find((x) => x.name === a.day_name)?.servings.includes('breakfast')}
+							<ListBoxItem bind:group={a.servings} name="medium" value="breakfast"
+								>Breakfast</ListBoxItem
+							>
+						{/if}
+						{#if $days.find((x) => x.name === a.day_name)?.servings.includes('lunch')}
+							<ListBoxItem bind:group={a.servings} name="medium" value="lunch">Lunch</ListBoxItem>
+						{/if}
+						{#if $days.find((x) => x.name === a.day_name)?.servings.includes('dinner')}
+							<ListBoxItem bind:group={a.servings} name="medium" value="dinner">Dinner</ListBoxItem>
+						{/if}
+						{#if $days.find((x) => x.name === a.day_name)?.servings.includes('snacks')}
+							<ListBoxItem bind:group={a.servings} name="medium" value="snacks">Snacks</ListBoxItem>
+						{/if}
 					</ListBox>
 				{/if}
 			{/each}
