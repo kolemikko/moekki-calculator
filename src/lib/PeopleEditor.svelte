@@ -20,7 +20,7 @@
 	}
 </script>
 
-<h3 class="h3">People & Attendance</h3>
+<h3 class="h3" style="padding-bottom: 10px">People & Attendance</h3>
 <input class="input" type="text" placeholder="Name" bind:value={new_person_name} />
 <button
 	class="btn variant-filled-primary"

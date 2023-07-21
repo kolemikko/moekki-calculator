@@ -1,4 +1,4 @@
 import { writable } from 'svelte/store';
-import type { Day } from '../types';
+import { Day } from '../types';
 
-export const days = writable<Day[]>([]);
+export const days = writable<Day[]>([new Day("1")]);

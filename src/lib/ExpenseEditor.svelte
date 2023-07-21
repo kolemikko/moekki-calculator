@@ -22,7 +22,7 @@
 	}
 </script>
 
-<h3 class="h3">Expenses</h3>
+<h3 class="h3" style="padding-bottom: 10px">Expenses</h3>
 <input class="input" type="text" placeholder="Name" bind:value={new_expense_name} />
 <input class="input" type="number" placeholder="Price" bind:value={new_expense_price} />
 <button

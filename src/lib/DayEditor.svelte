@@ -21,39 +21,41 @@
 	}
 </script>
 
-<h3 class="h3">Trip definition</h3>
+<h3 class="h3" style="padding-bottom: 10px">Trip definition</h3>
 <!-- <input class="input" type="text" placeholder="Name for" /> -->
 <button class="btn variant-filled-primary" on:click={() => addDay()}>Add day</button>
 <button class="btn variant-filled-primary" on:click={() => removeDay()}>Remove day</button>
-<div class="day-definitions">
+<div class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex gap-4 overflow-x-auto px-4 py-10">
 	{#each $days as day}
-		<div class="day-servings">
-			<p>Day {day.name}</p>
-			<ListBox multiple>
-				<ListBoxItem bind:group={day.servings} name="medium" value="breakfast"
-					>Breakfast
-					{#if day.servings.includes('breakfast')}
-						<p>{day.breakfast_day_rate}€</p>
-					{/if}
-				</ListBoxItem>
-				<ListBoxItem bind:group={day.servings} name="medium" value="lunch"
-					>Lunch {#if day.servings.includes('lunch')}
-						<p>{day.lunch_day_rate}€</p>
-					{/if}
-				</ListBoxItem>
-				<ListBoxItem bind:group={day.servings} name="medium" value="dinner"
-					>Dinner
-					{#if day.servings.includes('dinner')}
-						<p>{day.dinner_day_rate}€</p>
-					{/if}
-				</ListBoxItem>
-				<ListBoxItem bind:group={day.servings} name="medium" value="snacks"
-					>Snacks
-					{#if day.servings.includes('snacks')}
-						<p>{day.snacks_day_rate}€</p>
-					{/if}
-				</ListBoxItem>
-			</ListBox>
+		<div class="snap-start shrink-0 card w-3 md:w-60">
+			<div class="day-servings">
+				<h5 class="h5" style="padding-bottom: 10px">Day {day.name}</h5>
+				<ListBox multiple spacing="space-y-3">
+					<ListBoxItem bind:group={day.servings} name="medium" value="breakfast"
+						>Breakfast
+						{#if day.servings.includes('breakfast')}
+							<p>{day.breakfast_day_rate}€</p>
+						{/if}
+					</ListBoxItem>
+					<ListBoxItem bind:group={day.servings} name="medium" value="lunch"
+						>Lunch {#if day.servings.includes('lunch')}
+							<p>{day.lunch_day_rate}€</p>
+						{/if}
+					</ListBoxItem>
+					<ListBoxItem bind:group={day.servings} name="medium" value="dinner"
+						>Dinner
+						{#if day.servings.includes('dinner')}
+							<p>{day.dinner_day_rate}€</p>
+						{/if}
+					</ListBoxItem>
+					<ListBoxItem bind:group={day.servings} name="medium" value="snacks"
+						>Snacks
+						{#if day.servings.includes('snacks')}
+							<p>{day.snacks_day_rate}€</p>
+						{/if}
+					</ListBoxItem>
+				</ListBox>
+			</div>
 		</div>
 	{/each}
 </div>
@@ -61,15 +63,10 @@
 <style>
 	.day-servings {
 		/* max-width: 200px; */
-		width: 15%;
-		padding: 10px;
+		/* width: 15%; */
+		padding: 15px;
 		/* border-width: 3px; */
 		/* border-radius: 30px; */
 		/* margin: 0 auto; */
-	}
-
-	.day-definitions {
-		display: grid;
-		grid-auto-flow: dense;
 	}
 </style>
