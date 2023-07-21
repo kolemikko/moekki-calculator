@@ -38,26 +38,33 @@
 		<li class="py-5 px-3 scroll-px-4 scroll-smooth overflow-x-auto">
 			<h5 class="h5">{person.name}</h5>
 			{#each person.attendance as a}
-				<p>Day {a.day_name}</p>
-				<SlideToggle name="Present" bind:checked={a.present} />
-				{#if a.present}
-					<ListBox multiple>
-						{#if $days.find((x) => x.name === a.day_name)?.servings.includes('breakfast')}
-							<ListBoxItem bind:group={a.servings} name="medium" value="breakfast"
-								>Breakfast</ListBoxItem
-							>
-						{/if}
-						{#if $days.find((x) => x.name === a.day_name)?.servings.includes('lunch')}
-							<ListBoxItem bind:group={a.servings} name="medium" value="lunch">Lunch</ListBoxItem>
-						{/if}
-						{#if $days.find((x) => x.name === a.day_name)?.servings.includes('dinner')}
-							<ListBoxItem bind:group={a.servings} name="medium" value="dinner">Dinner</ListBoxItem>
-						{/if}
-						{#if $days.find((x) => x.name === a.day_name)?.servings.includes('snacks')}
-							<ListBoxItem bind:group={a.servings} name="medium" value="snacks">Snacks</ListBoxItem>
-						{/if}
-					</ListBox>
-				{/if}
+				<div>
+					<SlideToggle name="Present" class="py-2" bind:checked={a.present}
+						>Day {a.day_name}</SlideToggle
+					>
+					{#if a.present}
+						<ListBox multiple>
+							{#if $days.find((x) => x.name === a.day_name)?.servings.includes('breakfast')}
+								<ListBoxItem bind:group={a.servings} name="medium" value="breakfast"
+									>Breakfast</ListBoxItem
+								>
+							{/if}
+							{#if $days.find((x) => x.name === a.day_name)?.servings.includes('lunch')}
+								<ListBoxItem bind:group={a.servings} name="medium" value="lunch">Lunch</ListBoxItem>
+							{/if}
+							{#if $days.find((x) => x.name === a.day_name)?.servings.includes('dinner')}
+								<ListBoxItem bind:group={a.servings} name="medium" value="dinner"
+									>Dinner</ListBoxItem
+								>
+							{/if}
+							{#if $days.find((x) => x.name === a.day_name)?.servings.includes('snacks')}
+								<ListBoxItem bind:group={a.servings} name="medium" value="snacks"
+									>Snacks</ListBoxItem
+								>
+							{/if}
+						</ListBox>
+					{/if}
+				</div>
 			{/each}
 			<button class="btn variant-ghost-warning" on:click={() => removePerson(person.name)}>X</button
 			>
