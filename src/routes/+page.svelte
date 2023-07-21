@@ -5,8 +5,6 @@
 	import { AppBar, LightSwitch } from '@skeletonlabs/skeleton';
 </script>
 
-export const prerender = true;
-
 <AppBar>
 	<div class="space-y-5">
 		<h2 class="h2">Moekki-calculator</h2>
