@@ -2,6 +2,7 @@
 	import { expenses } from '../stores/expenses';
 	import { ListBox, ListBoxItem, SlideToggle } from '@skeletonlabs/skeleton';
 	import { Expense } from '../types';
+	import { totalCosts } from '../stores/totals';
 
 	let new_expense_name: String = '';
 	let new_expense_price: number = 0.0;
@@ -46,3 +47,8 @@
 		>
 	</div>
 {/each}
+
+<p>
+	Total: {$totalCosts.all}€ Breakfast: {$totalCosts.breakfast}€ Lunch: {$totalCosts.lunch}€ Dinner: {$totalCosts.dinner}€
+	Snacks: {$totalCosts.snacks}€
+</p>

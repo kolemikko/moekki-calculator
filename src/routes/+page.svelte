@@ -2,6 +2,7 @@
 	import DayEditor from '$lib/DayEditor.svelte';
 	import ExpenseEditor from '$lib/ExpenseEditor.svelte';
 	import PeopleEditor from '$lib/PeopleEditor.svelte';
+	import Updates from '$lib/Updates.svelte';
 	import { AppBar, LightSwitch } from '@skeletonlabs/skeleton';
 </script>
 
@@ -16,6 +17,7 @@
 <div class="container mx-auto p-8 space-y-8">
 	<!-- <div class="space-y-5"> -->
 	<!-- </div> -->
+	<Updates />
 	<section>
 		<DayEditor />
 	</section>
