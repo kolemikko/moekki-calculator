@@ -1,2 +1,4 @@
 # moekki-calculator
-Simple website to calculate food expenses of your mökki trip.
+Simple web tool to calculate food expenses of your amazing mökki trip.
+
+[Try it!](https://kolemikko.github.io/moekki-calculator/)
