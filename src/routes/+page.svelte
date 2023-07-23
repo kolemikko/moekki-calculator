@@ -25,14 +25,9 @@
 
 <AppBar>
 	<div class="space-y-5">
-		<div class="space-x-20" style="display:flex;justify-content:flex-end;align-items:center;">
-			<h2 class="h2">Moekki-calculator</h2>
-			<LightSwitch />
-			<button class="btn btn-sm variant-ghost-warning" on:click={() => resetSession()}
-				>Reset session</button
-			>
-		</div>
+		<h2 class="h2">Moekki-calculator</h2>
 	</div>
+	<LightSwitch />
 </AppBar>
 <div class="container mx-auto p-8 space-y-8">
 	<Updates />
@@ -47,5 +42,10 @@
 	</section>
 	<section class="card py-5 px-5" style="border-radius:5px;">
 		<Balances />
+	</section>
+	<section>
+		<button class="btn btn-sm variant-ghost-warning" on:click={() => resetSession()}
+			>Reset session</button
+		>
 	</section>
 </div>
