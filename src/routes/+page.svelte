@@ -5,13 +5,34 @@
 	import PeopleEditor from '$lib/PeopleEditor.svelte';
 	import Updates from '$lib/Updates.svelte';
 	import { AppBar, LightSwitch } from '@skeletonlabs/skeleton';
+	import { days } from '../stores/days';
+	import { Day } from '../types';
+	import { expenses } from '../stores/expenses';
+	import { people } from '../stores/people';
+
+	function resetSession() {
+		$days.splice(0, $days.length);
+		$days.push(new Day('1'));
+		$days = $days;
+
+		$expenses.splice(0, $expenses.length);
+		$expenses = $expenses;
+
+		$people.splice(0, $people.length);
+		$people = $people;
+	}
 </script>
 
 <AppBar>
 	<div class="space-y-5">
-		<h2 class="h2">Moekki-calculator</h2>
+		<div class="space-x-20" style="display:flex;justify-content:flex-end;align-items:center;">
+			<h2 class="h2">Moekki-calculator</h2>
+			<LightSwitch />
+			<button class="btn btn-sm variant-ghost-warning" on:click={() => resetSession()}
+				>Reset session</button
+			>
+		</div>
 	</div>
-	<LightSwitch />
 </AppBar>
 <div class="container mx-auto p-8 space-y-8">
 	<Updates />
