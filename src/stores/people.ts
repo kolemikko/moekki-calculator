@@ -1,4 +1,5 @@
-import { writable } from 'svelte/store';
+import type { Writable } from 'svelte/store';
 import type { Person } from '../types';
+import { localStorageStore } from '@skeletonlabs/skeleton';
 
-export const people = writable<Person[]>([]);
+export const people: Writable<Person[]> = localStorageStore('people', []);

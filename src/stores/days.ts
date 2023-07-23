@@ -1,4 +1,5 @@
-import { writable } from 'svelte/store';
+import type { Writable } from 'svelte/store';
 import { Day } from '../types';
+import { localStorageStore } from '@skeletonlabs/skeleton';
 
-export const days = writable<Day[]>([new Day("1")]);
+export const days: Writable<Day[]> = localStorageStore('days', [new Day("1")]);
